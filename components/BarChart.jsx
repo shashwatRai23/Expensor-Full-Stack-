@@ -1,5 +1,5 @@
 "use client"
-import { Doughnut, Bar } from "react-chartjs-2";
+import { Doughnut, Bar, Chart } from "react-chartjs-2";
 import {
   Chart as ChartJs,
   CategoryScale,
@@ -21,7 +21,9 @@ ChartJs.register(
 
 const BarChart = ({data, options}) => {
   return (
-    <Bar data={data} options={options}/>
+    <div className="chart">
+      <Bar data={data} options={options}/>
+    </div>
   )
 }
 

@@ -1,11 +1,12 @@
 const filterCategoryExpenses = (expenses, month) => {
   const arr = [0, 0, 0, 0, 0];
-
+  let sum=0;
   expenses.map((expense) => {
     const dateString = expense.date;
     const date = new Date(dateString);
     const currMonth = date.getMonth();
     if (currMonth == month) {
+      sum+=expense.amount;
       if (expense.category === "food") {
         arr[0] += expense.amount;
       } else if (expense.category === "grocery") {
@@ -19,7 +20,7 @@ const filterCategoryExpenses = (expenses, month) => {
       }
     }
   });
-  return arr;
+  return {arr,sum};
 };
 
 export default filterCategoryExpenses;

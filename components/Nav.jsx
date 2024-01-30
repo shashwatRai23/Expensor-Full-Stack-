@@ -7,12 +7,11 @@ import { signOut, useSession } from "next-auth/react";
 const Nav = () => {
   const { data: session } = useSession();
   return (
-    <nav className="flex justify-between mb-3 w-full p-3 items-center">
-      <Link href="/" className="logo">
-        Logo
-      </Link>
-      <div className="flex justify-center">
-        {session && <Link href={"/addexpense"}>Add Expense</Link>}
+    <nav className="flex justify-between mb-3 w-full p-3 items-center text-white bg-neutral-900	">
+      <div>
+        <Link href="/" className="logo text-cyan-400	text-xl font-bold">
+          Expensor
+        </Link>
       </div>
       <div className="flex gap-3 items-center justify-center">
         {!session && <Link href={"/login"}>Sign In</Link>}
@@ -22,7 +21,16 @@ const Nav = () => {
           </button>
         )}
         {session && (
-          <Link href={"/profile"} className="border-solid border-2 border-black rounded-full">
+          <Link href={"/addexpense"} className="flex gap-2 items-center border rounded-full border-cyan-400 p-2	bg-black  font-bold">
+            <span>+</span>
+            <span>Add Expenses</span>
+          </Link>
+        )}
+        {session && (
+          <Link
+            href={"/profile"}
+            className="border-solid border-2 border-black rounded-full"
+          >
             <img
               src="/assets/profile.jpg"
               alt="profile"
