@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import filterMonthlyExpenses from "@/models/filterMonthlyExpenses";
+import filterMonthlyExpenses from "@/utils/filterMonthlyExpenses";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import BarChart from "@/components/BarChart";
