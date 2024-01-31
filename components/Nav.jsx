@@ -21,9 +21,14 @@ const Nav = () => {
           </button>
         )}
         {session && (
-          <Link href={"/addexpense"} className="flex gap-2 items-center border rounded-full border-cyan-400 p-2	bg-black  font-bold">
+          <Link href={"/addexpense"} className="flex gap-2 items-center btn">
             <span>+</span>
             <span>Add Expenses</span>
+          </Link>
+        )}
+        {session && (
+          <Link href={"/monthlyanalysis"} className="flex gap-2 items-center btn">
+            Monthly Analysis
           </Link>
         )}
         {session && (

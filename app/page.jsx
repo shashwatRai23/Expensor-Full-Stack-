@@ -10,28 +10,12 @@ import filterCategoryExpenses from "@/models/filterCategoryExpenses";
 import filterMonthlyExpenses from "@/models/filterMonthlyExpenses";
 import Filter from "@/components/Filter";
 import Expenses from "@/components/Expenses";
+import Home from "@/components/Home";
 
-const backgroundColor = [
-  "#b9fbc0",
-  "#98f5e1",
-  "#8eecf5",
-  "#90dbf4",
-  "#a3c4f3",
-  "#cfbaf0",
-  "#f1c0e8",
-  "#ffcfd2",
-  "#fde4cf",
-  "#fbf8cc",
-  "#b8b8ff",
-  "#9381ff",
-];
-
-const Home = () => {
+const page = () => {
   const { data: session } = useSession();
 
-  const [barChartData, setBarChartData] = useState({ datasets: [] });
-  const [barChartOptions, setBarChartOptions] = useState({});
-
+  
   const [doughnutChartData, setDoughnutChartData] = useState({ datasets: [] });
   const [doughnutChartOptions, setDoughnutChartOptions] = useState({});
 
@@ -81,29 +65,6 @@ const Home = () => {
             ],
           });
           setTotalExpense(arr1.sum);
-          setBarChartData({
-            labels: [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ],
-            datasets: [
-              {
-                label: "₹",
-                data: arr2,
-                backgroundColor: backgroundColor,
-              },
-            ],
-          });
           // toast.success("Expense Fetched Succesfully....");
         } else {
           toast.error("Error in adding expense..");
@@ -116,33 +77,6 @@ const Home = () => {
       fetchExpenses();
     }
 
-    setBarChartOptions({
-      indexAxis: "x",
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          ticks: {
-            color: "#fff",
-          },
-        },
-        x: {
-          ticks: {
-            color: "#fff",
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          position: "top",
-        },
-        title: {
-          display: true,
-          text: "Monthly expenses",
-          color: "#fff",
-        },
-      },
-    });
     setDoughnutChartOptions({
       indexAxis: "x",
       responsive: true,
@@ -184,14 +118,9 @@ const Home = () => {
         </div>
         <Expenses expenses={expenses}/>
       </div>
-      <div className="h-screen flex justify-around w-full p-3 items-center gap-10 snap-center">
-        <div>Bar chart</div>
-        <div className="w-2/3">
-          <BarChart data={barChartData} options={barChartOptions} />
-        </div>
-      </div>
+      <Home/>
     </section>
   );
 };
 
-export default Home;
+export default page;

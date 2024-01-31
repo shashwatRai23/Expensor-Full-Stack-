@@ -2,7 +2,7 @@ import React from "react";
 
 const Expenses = ({ expenses }) => {
   return (
-    <div className="w-1/3 flex flex-col gap-4 h-5/6 overflow-auto expenses px-5">
+    <div className="w-1/3 flex flex-col gap-4 h-screen overflow-auto expenses px-5">
       {expenses.map((expense, index) => {
         const date = new Date(expense.date);
         const month = date.toLocaleString("default", { month: "short" });
