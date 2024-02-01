@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import myanimation from "@/public/assets/animation.json";
 import myanimation2 from "@/public/assets/animation2.json";
-import myanimation3 from "@/public/assets/animation3.json";
 import lottie from "lottie-web";
 import Link from "next/link";
 

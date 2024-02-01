@@ -1,21 +1,37 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useState } from "react";
-import BarChart from "@/components/BarChart";
+import { useEffect, useState } from "react";
 import DoughnutChart from "@/components/DoughnutChart";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import filterCategoryExpenses from "@/utils/filterCategoryExpenses";
-import filterMonthlyExpenses from "@/utils/filterMonthlyExpenses";
-import Filter from "@/components/Filter";
 import Expenses from "@/components/Expenses";
 import Home from "@/components/Home";
+import { monthsList } from "@/utils/monthsList";
+import { categoryList } from "@/utils/categoryList";
+import { set } from "mongoose";
 
 const page = () => {
   const { data: session } = useSession();
+  const options={
+    indexAxis: "x",
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Daily Expenses",
+        color: "#fff",
+      },
+    },
+  }
+  const date = new Date();
+  const currMonth = date.getMonth();
+  const currYear = date.getFullYear();
 
-  
   const [doughnutChartData, setDoughnutChartData] = useState({ datasets: [] });
   const [doughnutChartOptions, setDoughnutChartOptions] = useState({});
 
@@ -23,8 +39,13 @@ const page = () => {
 
   const [expenses, setExpenses] = useState([]);
 
-  const [month,setMonth]=useState(new Date().toLocaleString("default",{month : "short"}));
-  const [day,setDay]=useState(new Date().getDate());
+  const [month, setMonth] = useState(
+    new Date().toLocaleString("default", { month: "short" })
+  );
+  const [fullMonth, setFullMonth] = useState(
+    new Date().toLocaleString("default", { month: "long" })
+  );
+  const [day, setDay] = useState(new Date().getDate());
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -42,24 +63,23 @@ const page = () => {
         if (res.ok) {
           const data = await res.json();
           const currexpenses = data.expenses;
-          setExpenses((prevState)=>{
+          setExpenses(() => {
             return [...currexpenses];
-          })
-          const d = new Date();
-          const arr1 = filterCategoryExpenses(currexpenses, d.getMonth());
-          const arr2 = filterMonthlyExpenses(currexpenses, d.getFullYear());
+          });
+          const arr1 = filterCategoryExpenses(currexpenses, fullMonth);
           setDoughnutChartData({
-            labels: ["Food", "Grocery", "Cloth", "Travel", "Party"],
+            labels: categoryList,
             datasets: [
               {
                 label: "₹",
                 data: arr1.arr,
                 backgroundColor: [
-                  "#b9fbc0",
-                  "#8eecf5",
-                  "#a3c4f3",
-                  "#f1c0e8",
-                  "#fde4cf",
+                  "#f94144",
+                  "#f8961e",
+                  "#f9c74f",
+                  "#43aa8b",
+                  "#4d908e",
+                  "#277da1",
                 ],
               },
             ],
@@ -76,51 +96,48 @@ const page = () => {
     if (session) {
       fetchExpenses();
     }
+    setDoughnutChartOptions(options);
+  }, [session,fullMonth]);
 
-    setDoughnutChartOptions({
-      indexAxis: "x",
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        // colors:{
-        //   forceOverride: true
-        // },
-        legend: {
-          position: "top",
-        },
-        title: {
-          display: true,
-          text: "Daily Expenses",
-          color: "#fff",
-        },
-      },
-    });
-  }, [session]);
-
+  const handleChange = (e) => {
+    setFullMonth(e.target.value);
+  }
 
   return (
     <>
-    {session && <section className="snap-y">
-      <div className="grid grid-cols-2 px-5 py-3 gap-10 snap-center">
-        <div className="flex flex-col gap-2 w-5/6 h-screen">
-          <div className="card">
-            Total Amount Spent from {`${month}-1 to ${month}-${day}`} :{" "}
-            <span className="font-bold">₹ {totalExpense}</span>{" "}
+      {session && (
+        <section className="snap-y w-4/5 m-auto">
+          <div className="grid grid-cols-2 px-5 py-3 gap-10 snap-center">
+            <div className="flex flex-col gap-2 h-screen">
+              <div className="card text-center">
+                Total Amount Spent in {`${fullMonth.slice(0,3)}`} :{" "}
+                <span className="font-bold">₹ {totalExpense}</span>{" "}
+              </div>
+              <DoughnutChart
+                data={doughnutChartData}
+                options={doughnutChartOptions}
+              />
+              <div className="card flex gap-2 justify-center">
+                <select value={currYear} className="inp" name="years">
+                  <option value={2023}>2023</option>
+                </select>
+                <select value={fullMonth} className="inp" name="months" onChange={handleChange}>
+                  {monthsList.map(
+                    (month, index) =>
+                      index <= currMonth && (
+                        <option key={index} value={month}>
+                          {month}
+                        </option>
+                      )
+                  )}
+                </select>
+              </div>
+            </div>
+            <Expenses expenses={expenses} month={fullMonth} />
           </div>
-          <DoughnutChart
-            data={doughnutChartData}
-            options={doughnutChartOptions}
-          />
-          <div className="card flex gap-2 justify-center">
-            <Filter filterby="year"/>
-            <Filter filterby="month"/>
-            <Filter filterby="date"/>
-          </div>
-        </div>
-        <Expenses expenses={expenses}/>
-      </div>
-    </section>}
-      {!session && <Home/>}
+        </section>
+      )}
+      {!session && <Home />}
     </>
   );
 };

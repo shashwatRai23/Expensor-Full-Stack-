@@ -7,24 +7,12 @@ import { useEffect } from "react";
 import lottie from "lottie-web";
 import myanimation from "@/public/assets/animation5.json";
 const Nav = () => {
-  useEffect(() => {
-    return () => {
-      lottie.loadAnimation({
-        container: document.querySelector("#logoAnimation"),
-        animationData: myanimation,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-      });
-    };
-  }, []);
   const { data: session } = useSession();
   return (
     <nav className="flex justify-between mb-3 w-full p-3 items-center text-white bg-neutral-900	">
       <div>
-        <Link href="/" className="logo text-violet-700 flex items-center gap-1 text-xl font-bold">
-          <span id="logoAnimation"></span>
-          <span>EXPENSOR</span>
+        <Link href="/" className="logo underline text-violet-500 flex items-center gap-1 text-xl font-bold">
+          ＥＸＰＥＮＳＯＲ 
         </Link>
       </div>
       <div className="flex gap-3 items-center justify-center">

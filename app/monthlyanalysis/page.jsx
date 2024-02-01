@@ -6,7 +6,7 @@ import filterMonthlyExpenses from "@/utils/filterMonthlyExpenses";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import BarChart from "@/components/BarChart";
-
+import { monthsList } from "@/utils/monthsList";
 const backgroundColor = [
     "#b9fbc0",
     "#98f5e1",
@@ -49,20 +49,7 @@ const monthlyanalysis = () => {
 
           const arr2 = filterMonthlyExpenses(currexpenses, d.getFullYear());
           setBarChartData({
-            labels: [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ],
+            labels: monthsList,
             datasets: [
               {
                 label: "₹",
@@ -113,7 +100,10 @@ const monthlyanalysis = () => {
   }, [session]);
   return (
     <div className="h-screen flex justify-around w-full p-3 items-center gap-10 snap-center">
-      <div>Bar chart</div>
+      <div>
+        <div className="text-2xl font-bold">Monthly Analysis</div>
+        <div>Visulisation of Monthly expenses of this year</div>
+      </div>
       <div className="w-2/3">
         <BarChart data={barChartData} options={barChartOptions} />
       </div>

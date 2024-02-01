@@ -39,29 +39,11 @@ const Profile = () => {
 
   return (
     <div className="px-3 ">
-      <h1 className="mt-5 font-bold text-black text-2xl text-cyan-400">
+      <h1 className="mt-5 font-bold text-black text-2xl text-violet-500">
         Welcome {session?.user.email}
       </h1>
-      <p className="mt-2 text-xl">Here you can see edit all your expenses</p>
+      <p className="mt-2 text text-neutral-500">Here you can see edit all your expenses...</p>
       <ExpenseTable expenses={allExpenses}/>
-      {/* <div>
-        {allExpenses.map((expense) => {
-          const dateString = expense.date;
-          const date=new Date(dateString);
-          const year=date.getFullYear();
-          const month=date.getMonth();
-          const day=date.getDay();
-          return (
-            <div className="flex gap-2">
-              <span>{expense.name}</span>
-              <span>{expense.amount}</span>
-              <span>{`${day}-${month+1}-${year}`}</span>
-              <span>{expense.category}</span>
-            </div>
-          );
-        })}
-      </div> */}
-      {/* <h2 className='head_text'>Here You can see edit all your Expenses</h2> */}
     </div>
   );
 };

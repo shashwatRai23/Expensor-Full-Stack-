@@ -1,12 +1,12 @@
 const filterCategoryExpenses = (expenses, month) => {
-  const arr = [0, 0, 0, 0, 0];
-  let sum=0;
+  const arr = [0, 0, 0, 0, 0, 0];
+  let sum = 0;
   expenses.map((expense) => {
     const dateString = expense.date;
     const date = new Date(dateString);
-    const currMonth = date.getMonth();
+    const currMonth = date.toLocaleString("default", { month: "long" });
     if (currMonth == month) {
-      sum+=expense.amount;
+      sum += expense.amount;
       if (expense.category === "food") {
         arr[0] += expense.amount;
       } else if (expense.category === "grocery") {
@@ -17,10 +17,12 @@ const filterCategoryExpenses = (expenses, month) => {
         arr[3] += expense.amount;
       } else if (expense.category === "party") {
         arr[4] += expense.amount;
+      } else if (expense.category === "fuel") {
+        arr[4] += expense.amount;
       }
     }
   });
-  return {arr,sum};
+  return { arr, sum };
 };
 
 export default filterCategoryExpenses;

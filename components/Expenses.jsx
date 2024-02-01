@@ -1,27 +1,25 @@
 import React from "react";
-
-const Expenses = ({ expenses }) => {
+import PaidIcon from '@mui/icons-material/Paid';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+const Expenses = ({ expenses,month }) => {
   return (
-    <div className="w-5/6 flex flex-col gap-4 h-screen overflow-auto expenses px-5">
+    <div className="flex flex-col gap-4 h-screen overflow-auto expenses px-5">
       {expenses.map((expense, index) => {
-        const date = new Date(expense.date);
-        const currDate=new Date();
-        const month = date.toLocaleString("default", { month: "short" });
-        const currMonth = currDate.toLocaleString("default", { month: "short" });
-        const day = date.getDate();
-        if(month!==currMonth)return;
+        const expenseDate = new Date(expense.date);
+        const expenseMonth = expenseDate.toLocaleString("default", { month: "long" });
+        // const currMonth = currDate.toLocaleString("default", { month: "short" });
+        const expenseDay = expenseDate.getDate();
+        if(month!==expenseMonth)return;
         return (
           <div
             key={index}
             className="card flex items-center justify-between p-2 "
           >
             <div className="flex gap-3 items-center text-white">
-              <div className="w-10 h-5 flex">
-                <img className="" src="/assets/money.jpg" />
-              </div>
+              <CurrencyExchangeIcon className="text-green-400 w-10 h-10"/>
               <div className="flex flex-col gap-1">
-                <div className="flex gap-2 text-violet-700">
-                  <div className="rounded-full bg-neutral-900 px-3 py-1">{`${month} ${day}`}</div>
+                <div className="flex gap-2 text-violet-500">
+                  <div className="rounded-full bg-neutral-900 px-3 py-1">{`${expenseMonth.slice(0,3)} ${expenseDay}`}</div>
                   <div className="rounded-full bg-neutral-900 px-3 py-1">
                     {expense.category}
                   </div>
