@@ -2,7 +2,6 @@
     <img src="https://img.shields.io/badge/-Next_JS-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=000" alt="Next.js" />
     <img src="https://img.shields.io/badge/-Mongodb-black?style=for-the-badge&logoColor=white&logo=mongodb&color=47A248" alt="mongodb" />
     <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
-    <img src="[https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4](https://www.google.com/imgres?imgurl=https%3A%2F%2Fcamo.githubusercontent.com%2F9be0208aa516b4d1976412d27e9f73d851ea253f8ee005a0b600939f841bba8b%2F68747470733a2f2f7777772e63686172746a732e6f72672f6d656469612f6c6f676f2d7469746c652e737667&tbnid=xE1dMmnRc7qCFM&vet=12ahUKEwjKwf_y1YqEAxUQsmMGHVqaAewQMygFegQIARB3..i&imgrefurl=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fchart.js%3FactiveTab%3Dreadme&docid=-9tBDxs1A-GjAM&w=256&h=256&q=chart%20js&ved=2ahUKEwjKwf_y1YqEAxUQsmMGHVqaAewQMygFegQIARB3)" alt="chartjs" />
   </div>
 
   <h3 align="center">Next.js 14 Expense Tracking Application</h3>
