@@ -99,9 +99,10 @@ const page = () => {
 
 
   return (
-    <section className="snap-y">
-      <div className="h-screen flex justify-around w-full p-3 gap-10 snap-center">
-        <div className="w-1/3 flex flex-col gap-2">
+    <>
+    {session && <section className="snap-y">
+      <div className="grid grid-cols-2 px-5 py-3 gap-10 snap-center">
+        <div className="flex flex-col gap-2 w-5/6 h-screen">
           <div className="card">
             Total Amount Spent from {`${month}-1 to ${month}-${day}`} :{" "}
             <span className="font-bold">₹ {totalExpense}</span>{" "}
@@ -118,8 +119,9 @@ const page = () => {
         </div>
         <Expenses expenses={expenses}/>
       </div>
-      <Home/>
-    </section>
+    </section>}
+      {!session && <Home/>}
+    </>
   );
 };
 

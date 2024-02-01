@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
+import ExpenseTable from "@/components/ExpenseTable";
 
 const Profile = () => {
   const { data: session } = useSession();
@@ -37,12 +38,13 @@ const Profile = () => {
   }, [session]);
 
   return (
-    <div className="p-2">
-      <h1 className="mt-5 font-bold text-black text-2xl">
+    <div className="px-3 ">
+      <h1 className="mt-5 font-bold text-black text-2xl text-cyan-400">
         Welcome {session?.user.email}
       </h1>
       <p className="mt-2 text-xl">Here you can see edit all your expenses</p>
-      <div>
+      <ExpenseTable expenses={allExpenses}/>
+      {/* <div>
         {allExpenses.map((expense) => {
           const dateString = expense.date;
           const date=new Date(dateString);
@@ -58,7 +60,7 @@ const Profile = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
       {/* <h2 className='head_text'>Here You can see edit all your Expenses</h2> */}
     </div>
   );

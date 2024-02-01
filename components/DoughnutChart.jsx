@@ -21,7 +21,7 @@ ChartJs.register(
 
 const DoughnutChart = ({data, options}) => {
   return (
-    <div className="card">
+    <div className="card h-screen">
       <Doughnut data={data} options={options}/>
     </div>
   )
