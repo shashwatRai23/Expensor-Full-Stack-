@@ -20,6 +20,7 @@
 
 ## <a name="introduction">🤖 Introduction</a>
 **Visualise and Track your Daily Expenses**
+
 Expensor is a expense tracking web application where a user can track and visualise his daily expenses.
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
@@ -44,7 +45,7 @@ Expensor is a expense tracking web application where a user can track and visual
 
   ![PromptCard](public/assets/images/monthlyAnalysis.png)
   
-👉 **Monthly Analysis of Expenses**: Each user gets a dedicated profile page where he can see all his expense uptill now.
+👉 **Profile Page**: Each user gets a dedicated profile page where he can see all his expense uptill now.
 
   ![PromptCard](public/assets/images/profile.png)
 
