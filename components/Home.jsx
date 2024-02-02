@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex gap-3 justify-around items-center px-5">
+    <div className="flex px-5 items-center home">
       <div className="flex flex-col gap-4 flex-1">
         <h1 className="heading">
           The{" "}

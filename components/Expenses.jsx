@@ -1,9 +1,8 @@
 import React from "react";
-import PaidIcon from '@mui/icons-material/Paid';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 const Expenses = ({ expenses,month }) => {
   return (
-    <div className="flex flex-col gap-4 h-screen overflow-auto expenses px-5">
+    <div className="flex flex-col gap-4 h-screen overflow-auto expenses flex-1">
       {expenses.map((expense, index) => {
         const expenseDate = new Date(expense.date);
         const expenseMonth = expenseDate.toLocaleString("default", { month: "long" });
@@ -16,7 +15,7 @@ const Expenses = ({ expenses,month }) => {
             className="card flex items-center justify-between p-2 "
           >
             <div className="flex gap-3 items-center text-white">
-              <CurrencyExchangeIcon className="text-green-400 w-10 h-10"/>
+              <CurrencyExchangeIcon className="text-green-400 "/>
               <div className="flex flex-col gap-1">
                 <div className="flex gap-2 text-violet-500">
                   <div className="rounded-full bg-neutral-900 px-3 py-1">{`${expenseMonth.slice(0,3)} ${expenseDay}`}</div>

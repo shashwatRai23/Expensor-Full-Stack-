@@ -99,7 +99,7 @@ const monthlyanalysis = () => {
     });
   }, [session]);
   return (
-    <div className="h-screen flex justify-around w-full p-3 items-center gap-10 snap-center">
+    <div className="flex justify-around w-full p-3 items-center gap-10 monthAnalysis">
       <div>
         <div className="text-2xl font-bold">Monthly Analysis</div>
         <div>Visulisation of Monthly expenses of this year</div>

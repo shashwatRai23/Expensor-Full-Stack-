@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <Provider>
           <Nav />
           <Toaster />
-          <main className="app text-white snap-y h-screen">{children}</main>
+          <main className="app text-white">{children}</main>
         </Provider>
       </body>
     </html>

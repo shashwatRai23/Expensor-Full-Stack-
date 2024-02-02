@@ -8,26 +8,94 @@
   Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
 */
 
-#animation{
+#animation {
   /* height: 500px; */
   width: 100%;
 }
 
-#logoAnimation{
+#logoAnimation {
   height: 50px;
   width: 50px;
-
 }
 
+.afterloginpage {
+  width: 90%;
+}
 
+.form_container {
+  width: 33%;
+}
 
-.signin{
+.doughnut{
+  height: 500px;
+}
+
+.mobileNav{
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .afterloginpage {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form_container {
+    width: 50%;
+  }
+  .afterloginpage {
+    flex-direction: column;
+  }
+  .mobileNav{
+    display: block;
+    position: absolute;
+    right: 10px;
+  }
+  .container{
+    position: absolute;
+    width: 200px;
+    top: 33px;
+    right: 10px;
+    border-radius: 20px;
+    padding: 1em;
+    background-color: black;
+  }
+  .nav{
+    display: none;
+  }
+  .monthAnalysis{
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 550px) {
+  .form_container {
+    width: 80%;
+  }
+  .afterloginpage {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .form_container {
+    width: 100%;
+  }
+  .home {
+    flex-direction: column;
+  }
+}
+
+.login form {
+  width: 100%;
+}
+
+.signin {
   width: fit-content;
 }
 
-.heading{
-  @apply text-5xl font-bold text-gray-200
-
+.heading {
+  @apply text-5xl font-bold text-gray-200;
 }
 
 .expenses::-webkit-scrollbar {
@@ -36,21 +104,20 @@
 
 /* Track */
 .expenses::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 4px;
 }
- 
+
 /* Handle */
 .expenses::-webkit-scrollbar-thumb {
-  background: black; 
+  background: black;
   border-radius: 4px;
 }
 
 /* Handle on hover */
 .expenses::-webkit-scrollbar-thumb:hover {
-  background: black; 
+  background: black;
 }
-
 
 .main {
   width: 100vw;
@@ -110,22 +177,22 @@
   opacity: 0.15;
 }
 
-.card{
-  @apply bg-neutral-950 	rounded-2xl p-3 text-gray-500 font-bold
+.card {
+  @apply bg-neutral-950 	rounded-2xl p-3 text-gray-500 font-bold;
 }
 
-.btn{
-  @apply border rounded-full border-violet-400 py-2 px-3	bg-black text-white
+.btn {
+  @apply border rounded-full border-violet-400 py-2 px-3	bg-black text-white;
 }
 
 .form_container {
-  @apply flex flex-col gap-3 border-solid  p-5 w-1/3 bg-neutral-950 rounded-lg shadow-lg m-auto mt-20 ;
+  @apply flex flex-col gap-3 border-solid  p-5 bg-neutral-950 rounded-lg shadow-lg m-auto mt-20;
 }
 .black_btn {
   @apply rounded-full border border-black  bg-violet-700	 py-1.5 px-5 text-white font-medium text-sm shadow-lg focus:outline-none focus:ring-0 cursor-pointer;
 }
 
-.inp{
+.inp {
   @apply px-6 py-2 rounded-md  border-gray-200 bg-neutral-900 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
 }
 

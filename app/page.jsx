@@ -13,7 +13,7 @@ import { set } from "mongoose";
 
 const page = () => {
   const { data: session } = useSession();
-  const options={
+  const options = {
     indexAxis: "x",
     responsive: true,
     maintainAspectRatio: false,
@@ -27,7 +27,7 @@ const page = () => {
         color: "#fff",
       },
     },
-  }
+  };
   const date = new Date();
   const currMonth = date.getMonth();
   const currYear = date.getFullYear();
@@ -97,44 +97,47 @@ const page = () => {
       fetchExpenses();
     }
     setDoughnutChartOptions(options);
-  }, [session,fullMonth]);
+  }, [session, fullMonth]);
 
   const handleChange = (e) => {
     setFullMonth(e.target.value);
-  }
+  };
 
   return (
     <>
       {session && (
-        <section className="snap-y w-4/5 m-auto">
-          <div className="grid grid-cols-2 px-5 py-3 gap-10 snap-center">
-            <div className="flex flex-col gap-2 h-screen">
-              <div className="card text-center">
-                Total Amount Spent in {`${fullMonth.slice(0,3)}`} :{" "}
-                <span className="font-bold">₹ {totalExpense}</span>{" "}
-              </div>
-              <DoughnutChart
-                data={doughnutChartData}
-                options={doughnutChartOptions}
-              />
-              <div className="card flex gap-2 justify-center">
-                <select value={currYear} className="inp" name="years">
-                  <option value={2023}>2023</option>
-                </select>
-                <select value={fullMonth} className="inp" name="months" onChange={handleChange}>
-                  {monthsList.map(
-                    (month, index) =>
-                      index <= currMonth && (
-                        <option key={index} value={month}>
-                          {month}
-                        </option>
-                      )
-                  )}
-                </select>
-              </div>
+        <section className="m-auto afterloginpage flex gap-4">
+          <div className="flex-1 flex flex-col gap-2">
+            <div className="card text-center">
+              Total Amount Spent in {`${fullMonth.slice(0, 3)}`} :{" "}
+              <span className="font-bold">₹ {totalExpense}</span>{" "}
             </div>
-            <Expenses expenses={expenses} month={fullMonth} />
+            <DoughnutChart
+              data={doughnutChartData}
+              options={doughnutChartOptions}
+            />
+            <div className="card flex gap-2 justify-center">
+              <select value={currYear} className="inp" name="years">
+                <option value={2023}>2023</option>
+              </select>
+              <select
+                value={fullMonth}
+                className="inp"
+                name="months"
+                onChange={handleChange}
+              >
+                {monthsList.map(
+                  (month, index) =>
+                    index <= currMonth && (
+                      <option key={index} value={month}>
+                        {month}
+                      </option>
+                    )
+                )}
+              </select>
+            </div>
           </div>
+          <Expenses expenses={expenses} month={fullMonth} />
         </section>
       )}
       {!session && <Home />}
