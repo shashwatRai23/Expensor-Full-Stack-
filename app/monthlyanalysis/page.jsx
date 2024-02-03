@@ -99,12 +99,12 @@ const monthlyanalysis = () => {
     });
   }, [session]);
   return (
-    <div className="flex justify-around w-full p-3 items-center gap-10 monthAnalysis">
-      <div>
+    <div className="flex flex-col justify-around w-full p-3 items-center gap-10 monthAnalysis">
+      <div className="flex-2">
         <div className="text-2xl font-bold">Monthly Analysis</div>
         <div>Visulisation of Monthly expenses of this year</div>
       </div>
-      <div className="w-2/3">
+      <div className="flex-1 barchart">
         <BarChart data={barChartData} options={barChartOptions} />
       </div>
     </div>

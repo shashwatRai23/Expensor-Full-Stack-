@@ -22,6 +22,10 @@
   width: 90%;
 }
 
+.barchart{
+  width: 80%;
+}
+
 .form_container {
   width: 33%;
 }
@@ -46,6 +50,9 @@
   }
   .afterloginpage {
     flex-direction: column;
+  }
+  .barchart{
+    width: 100%;
   }
   .mobileNav{
     display: block;
