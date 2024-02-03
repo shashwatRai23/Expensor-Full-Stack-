@@ -9,7 +9,6 @@ import Expenses from "@/components/Expenses";
 import Home from "@/components/Home";
 import { monthsList } from "@/utils/monthsList";
 import { categoryList } from "@/utils/categoryList";
-import { set } from "mongoose";
 
 const page = () => {
   const { data: session } = useSession();
@@ -39,13 +38,9 @@ const page = () => {
 
   const [expenses, setExpenses] = useState([]);
 
-  const [month, setMonth] = useState(
-    new Date().toLocaleString("default", { month: "short" })
-  );
   const [fullMonth, setFullMonth] = useState(
     new Date().toLocaleString("default", { month: "long" })
   );
-  const [day, setDay] = useState(new Date().getDate());
 
   useEffect(() => {
     const fetchExpenses = async () => {

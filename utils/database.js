@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import toast from "react-hot-toast";
 let isConnected=false;
 
 export const connectToDatabase = async () => {
@@ -17,6 +17,7 @@ export const connectToDatabase = async () => {
         console.log("Connected to database");
     }catch(e)
     {
+        toast.error("Error connecting to database");
         console.log("Error connecting to database");
     }
 }
