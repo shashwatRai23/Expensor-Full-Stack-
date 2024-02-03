@@ -17,7 +17,6 @@ export async function POST(req) {
     const currUser=await User.findOne({ email: user });
     currUser.expenses.push(expense._id);
     currUser.save();
-    console.log(expense);
     return NextResponse.json(
       { status: 201 },
       { message: "Expense added successfully" }

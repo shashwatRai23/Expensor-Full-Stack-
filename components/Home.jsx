@@ -1,25 +1,8 @@
-"use client";
-
-import { useEffect } from "react";
-import myanimation2 from "@/public/assets/animation2.json";
-import lottie from "lottie-web";
 import Link from "next/link";
 
 const Home = () => {
-  useEffect(() => {
-    return () => {
-      lottie.loadAnimation({
-        container: document.querySelector("#animation"),
-        animationData: myanimation2,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-      });
-    };
-  }, []);
-
   return (
-    <div className="flex px-5 items-center home">
+    <div className="flex px-5 items-center home gap-2">
       <div className="flex flex-col gap-4 flex-1">
         <h1 className="heading">
           The{" "}
@@ -37,7 +20,9 @@ const Home = () => {
           Get Started {`->`}
         </Link>
       </div>
-      <div className="flex-1" id="animation"></div>
+      <div className="flex-1" id="animation">
+        <img src="/assets/home.svg" alt="expense" />
+      </div>
     </div>
   );
 };
