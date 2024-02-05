@@ -23,38 +23,68 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
       <div className="mobileNav">
-        <Button className="rounded-full text-violet-500 mobileBtn" onClick={() => setActive((prevState) => !prevState)}>
+        <Button
+          className="rounded-full text-violet-500 mobileBtn"
+          onClick={() => setActive((prevState) => !prevState)}
+        >
           <MenuIcon className="text-violet-500" />
         </Button>
         {active && (
           <div className="flex flex-col gap-3 container">
             {!session && (
-              <Link href={"/login"} className="black_btn">
-                Sign In
+              <Link href={"/login"}>
+                <Button
+                  onClick={() => {
+                    setActive(false);
+                  }}
+                  className="black_btn"
+                >
+                  Sign In
+                </Button>
               </Link>
             )}
             {session && (
-              <button className="black_btn" onClick={() => signOut()}>
+              <Button
+                onClick={() => {
+                  setActive(false);
+                  signOut();
+                }}
+                className="black_btn"
+              >
                 Sign Out
-              </button>
+              </Button>
             )}
             {session && (
-              <Link
-                href={"/addexpense"}
-                className="flex gap-2 items-center btn"
-              >
-                <span>+</span>
-                <span>Add Expenses</span>
+              <Link href={"/addexpense"} className="btn">
+                <Button
+                  onClick={() => {
+                    setActive(false);
+                  }}
+                  className="flex gap-2 items-center btn"
+                >
+                  <span>+</span>
+                  <span>Add Expenses</span>
+                </Button>
               </Link>
             )}
             {session && (
               <Link href={"/monthlyanalysis"} className="btn">
-                Monthly Analysis
+                <Button
+                  onClick={() => {
+                    setActive(false);
+                  }}
+                  className="btn"
+                >
+                  Monthly Analysis
+                </Button>
               </Link>
             )}
             {session && (
               <Link
                 href={"/profile"}
+                onClick={() => {
+                  setActive(false);
+                }}
                 className="border-solid border-2 border-black rounded-full"
               >
                 <img
@@ -72,24 +102,26 @@ const Nav = () => {
 
       <div className="flex gap-3 items-center justify-center nav">
         {!session && (
-          <Link href={"/login"} className="black_btn">
-            Sign In
+          <Link href={"/login"}>
+            <Button className="black_btn">Sign In</Button>
           </Link>
         )}
         {session && (
-          <button className="black_btn" onClick={() => signOut()}>
+          <Button className="black_btn" onClick={() => signOut()}>
             Sign Out
-          </button>
+          </Button>
         )}
         {session && (
-          <Link href={"/addexpense"} className="flex gap-2 items-center btn">
-            <span>+</span>
-            <span>Add Expenses</span>
+          <Link href={"/addexpense"} className="btn">
+            <Button className="btn flex gap-2 items-center ">
+              <span>+</span>
+              <span>Add Expenses</span>
+            </Button>
           </Link>
         )}
         {session && (
           <Link href={"/monthlyanalysis"} className="btn">
-            Monthly Analysis
+            <Button className="btn">Monthly Analysis</Button>
           </Link>
         )}
         {session && (
